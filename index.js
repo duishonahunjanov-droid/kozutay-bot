@@ -201,5 +201,5 @@ async function sendMedia(to, item) {
     body: JSON.stringify({ messaging_product: 'whatsapp', to, type, [type]: { link: item.url, caption: item.caption || '' } })
   });
 }
-
-app.listen
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`KOZUTAY bot running on port ${PORT}`));

@@ -186,11 +186,13 @@ app.post('/webhook', async (req, res) => {
 });
 
 async function sendText(to, text) {
-  await fetch(`https://graph.facebook.com/v19.0/${WA_PHONE_ID}/messages`, {
+  const resp = await fetch(`https://graph.facebook.com/v21.0/${WA_PHONE_ID}/messages`, {
     method: 'POST',
     headers: { 'Authorization': `Bearer ${WA_TOKEN}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ messaging_product: 'whatsapp', to, type: 'text', text: { body: text } })
   });
+  const result = await resp.json();
+  console.log('WA sendText:', JSON.stringify(result));
 }
 
 async function sendMedia(to, item) {

@@ -202,4 +202,4 @@ async function sendMedia(to, item) {
   });
 }
 
-module.exports = app;
+app.listen
